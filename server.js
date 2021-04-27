@@ -1,5 +1,5 @@
 const express = require("express");
-const { knex } = require("./knex");
+const { knex } = require("./knexfile");
 
 const server = () => {
     const app = express();
@@ -12,8 +12,7 @@ const server = () => {
     app.use(express.json());
 
     app.get("/test", (req, res) => {
-      res.status(200);
-      res.end();
+      res.send("Sup G")
     });
 
 

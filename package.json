@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha -r dotenv/config tests",
     "start": "node -r dotenv/config server.js",
-    "dev": "nodemon -r dotenv/config server.js"
+    "dev": "nodemon -r dotenv/config server.js",
+    "migrate": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest",
+    "seed": "node -r dotenv/config ./node_modules/knex/bin/cli.js seed:run"
     
   },
   "repository": {
