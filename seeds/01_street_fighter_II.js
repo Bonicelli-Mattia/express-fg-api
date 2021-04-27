@@ -1,8 +1,7 @@
-
 exports.seed = function(knex) {
-  return knex('table_name').del()
+  return knex('characters').del()
     .then(function () {
-      return knex('table_name').insert([
+      return knex('characters').insert([
         {
           name: 'Akuma',
           height: '178cm',

@@ -14,7 +14,7 @@ INSERT INTO characters (name, height, weight, style, firstAppearance, occupation
 ('Akuma', '178cm', '90kg', 'Satsui no Hadou', 'Super Street Fighter II Turbo', 'Martial Artist', 'Ryu'),
 ('Cammy', '155cm', '61kg', 'Delta Red', 'Super Street Fighter II: The New Challengers', 'MI6 Delta Red Operative', 'M.Bison'),
 ('Chun-Li', '165cm', 'Secret', 'Chinese martial arts', 'Street Fighter II: The World Warrior', 'Interpol Officer', 'Vega'),
-('Dee Jay', '184cm', '92kg', 'Kickboxer', 'Super Street Fighter II: The New Challengers', 'Kickboxing', 'Zangief'),
+('Dee Jay', '184cm', '92kg', 'Kickboxing', 'Super Street Fighter II: The New Challengers', 'Kickboxer', 'Zangief'),
 ('Ken', '180cm', '77kg', 'Ansatsuken', 'Street Fighter', 'Martial Artist', 'Ryu'),
 ('M.Bison', '180cm', '96kg', 'Psycho Power', 'Street Fighter II: The World Warrior', 'Shadaloo King', 'Chun-Li'),
 ('Ryu', '180cm', '76kg', 'Ansatsuken', 'Street Fighter', 'Martial Artist', 'Ken'),

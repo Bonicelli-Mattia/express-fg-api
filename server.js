@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require("express");
 const { knex } = require("./knexfile");
 
@@ -10,6 +12,10 @@ const server = () => {
     });
 
     app.use(express.json());
+
+    app.get("/test", (req, res) => {
+      res.send("Sup G")
+    });
 
     app.get("/test", (req, res) => {
       res.send("Sup G")

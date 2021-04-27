@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
   return knex.schema.createTable('characters', function(tbl) {
       tbl.text('name').notNullable();
