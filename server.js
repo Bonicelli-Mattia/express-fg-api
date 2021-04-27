@@ -33,23 +33,24 @@ const server = () => {
       const data = await knex.select().table('characters');
       
       for (let i = 0; i <data.length; i ++) {
-        if (JSON.stringify(data[i].name) === target) {
-          match = (data[i]);
-          res.status(200);
+        if (data[i].name === target) {
+          console.log(data[i])
+          match = data[i];
+          res.status(202);
           res.send(match);
         }
       }
       res.status(400).end();
     });
 
-    app.post("/characters/:name", async (req, res) => {
-      const { name } = req.body.name;
-      const { height } = req.body.height;
-      const { weight } = req.body.weight;
-      const { style } = req.body.style;
-      const { firstAppearance } = req.body.firstAppearance;
-      const { occupation } = req.body.occupation;
-      const { rival } = req.body.rival;
+    app.post("/characters", async (req, res) => {
+      const { name } = req.params.name;
+      const { height } = req.params.height;
+      const { weight } = req.params.weight;
+      const { style } = req.params.style;
+      const { firstAppearance } = req.params.firstAppearance;
+      const { occupation } = req.params.occupation;
+      const { rival } = req.params.rival;
 
       knex('characters').insert({
         name: name,
@@ -65,22 +66,23 @@ const server = () => {
     });
 
     app.patch("/characters/:name"), async (req, res) => {
-      const { name } = req.body.name
-      const { attribute } = req.body.attribute
-      const { newValue } = req.body.newValue
+      const { name } = req.params.name
+      const { newValue } = req.params.newValue
 
-      await knex('characters').where({ name: name}).update({ attribute: newValue })
+      await knex('characters').where({ name: name}).update({ name: newValue})
 
       return res.status(202).end();
     }
 
     app.delete("/characters/:name"), async (req, res) => {
-      const { target } = req.body.name
+      const { target } = req.params.name
+
+      const data = await knex.select().table('characters');
       
       for (let i = 0; i < data.length - 1; i ++) {
-        if (JSON.stringify(data[i].name) === target) {
+        if (data[i].name === target) {
           
-          await knex('characters').where({name: name}).del();
+          await knex('characters').where({name: target}).del();
           res.status(200).end();
         }
       }
