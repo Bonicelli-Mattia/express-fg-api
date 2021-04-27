@@ -22,14 +22,24 @@ const server = () => {
 
     app.get("/characters", async (req, res) => {
       const allChars = await knex.select().from('characters');
-      res.json(allChars);
+      res.status(200);
+      res.send(allChars);
     });
 
     app.get("/characters/:name", async (req, res) => {
-      const { charName } = req.params.name;
-      const match = await knex.select().from('characters').where({ name: charName })
-      res.json(match);
-      res.end();
+      const { target } = req.params.name
+      let match = {}
+      
+      const data = await knex.select().table('characters');
+      
+      for (let i = 0; i <data.length; i ++) {
+        if (JSON.stringify(data[i].name) === target) {
+          match = (data[i]);
+          res.status(200);
+          res.send(match);
+        }
+      }
+      res.status(400).end();
     });
 
     app.post("/characters/:name", async (req, res) => {
@@ -50,8 +60,32 @@ const server = () => {
         occupation: occupation,
         rival: rival
       })
+      res.status(200);
       res.send(name + ' added');
     });
+
+    app.patch("/characters/:name"), async (req, res) => {
+      const { name } = req.body.name
+      const { attribute } = req.body.attribute
+      const { newValue } = req.body.newValue
+
+      await knex('characters').where({ name: name}).update({ attribute: newValue })
+
+      return res.status(202).end();
+    }
+
+    app.delete("/characters/:name"), async (req, res) => {
+      const { target } = req.body.name
+      
+      for (let i = 0; i < data.length - 1; i ++) {
+        if (JSON.stringify(data[i].name) === target) {
+          
+          await knex('characters').where({name: name}).del();
+          res.status(200).end();
+        }
+      }
+      res.status(400).end();
+  }
 
 
     return app;
